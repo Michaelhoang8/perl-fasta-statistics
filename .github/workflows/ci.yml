@@ -1,0 +1,17 @@
+name: Native tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install runtime
+        run: sudo apt-get update && sudo apt-get install -y perl
+      - name: Run native tests
+        run: |
+          prove -v t
+          perl bin/fasta_stats.pl fixtures/sequences.fasta > actual.json
+          perl -MJSON::PP -e 'local $/; my $d=decode_json(<>); die "wrong total" unless $d->{total_length} == 24' actual.json
