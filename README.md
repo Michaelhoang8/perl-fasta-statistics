@@ -14,4 +14,4 @@ Length includes ambiguous symbols. **Canonical GC percentage uses G+C divided by
 
 Filtering affects the summary and returned records, while input record count remains visible. The entire file is validated before filtering. Sequence strings are counted and discarded line by line, although per-record metadata and statistics remain in memory.
 
-All 18 native assertions passed locally with Perl 5.38.2. Ubuntu CI repeats them and executes the CLI. Only core modules are used: JSON::PP, Getopt::Long and Test::More. The fixture contains short illustrative sequences, not biological research data.
+All 18 native assertions passed with Perl 5.38.2 on Windows and in an Ubuntu container. The CLI summary was independently checked for total length, N50, canonical bases and ambiguous bases. Ubuntu CI repeats the tests and executes the CLI. Only core modules are used: JSON::PP, Getopt::Long and Test::More. The fixture contains short illustrative sequences, not biological research data.
